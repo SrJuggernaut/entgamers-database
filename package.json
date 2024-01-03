@@ -15,6 +15,7 @@
     "postinstall": "tsc && prisma generate"
   },
   "devDependencies": {
+    "@types/node": "^20.10.6",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "bun-types": "latest",
     "eslint": "^8.0.1",
@@ -26,6 +27,8 @@
   },
   "dependencies": {
     "@prisma/client": "^5.7.1",
+    "appwrite": "^13.0.1",
+    "node-appwrite": "^11.1.0",
     "prisma": "^5.7.1"
   }
 }
