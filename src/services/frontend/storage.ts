@@ -1,5 +1,5 @@
 import { ID, type Models } from 'appwrite'
-import { appwriteStorage } from '../../bin/appwrite'
+import { appwriteStorage } from '../../lib/appwrite'
 
 export type BucketCompression = 'none' | 'gzip' | 'zstd'
 export type fileGravity = 'center' | 'top-left' | 'top' | 'top-right' | 'left' | 'right' | 'bottom-left' | 'bottom' | 'bottom-right'

@@ -1,5 +1,5 @@
 import { ID, type Models } from 'appwrite'
-import { appwriteAccount } from '../../bin/appwrite'
+import { appwriteAccount } from '../../lib/appwrite'
 
 export type AccountPreferences = Record<string, any>
 

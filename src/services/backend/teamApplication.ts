@@ -1,5 +1,5 @@
 import { type Prisma, type TeamApplication } from '@prisma/client'
-import PrismaClient from '../../bin/prismaClient'
+import PrismaClient from '../../lib/prismaClient'
 
 export interface TeamApplicationList {
   teamApplications: TeamApplication[]

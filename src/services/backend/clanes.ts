@@ -1,5 +1,5 @@
 import { ID, type Models } from 'node-appwrite'
-import { appwriteNodeTeams } from '../../bin/appriteNode'
+import { appwriteNodeTeams } from '../../lib/appriteNode'
 
 export type ClanPreferences = Record<string, any>
 

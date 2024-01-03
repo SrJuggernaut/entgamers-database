@@ -1,5 +1,5 @@
 import { ID, type Models } from 'node-appwrite'
-import { appwriteNodeStorage } from '../../bin/appriteNode'
+import { appwriteNodeStorage } from '../../lib/appriteNode'
 
 export type BucketCompression = 'none' | 'gzip' | 'zstd'
 export type fileGravity = 'center' | 'top-left' | 'top' | 'top-right' | 'left' | 'right' | 'bottom-left' | 'bottom' | 'bottom-right'
