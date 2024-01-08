@@ -1,5 +1,5 @@
 import { type Models } from 'appwrite'
-import { appwriteTeams } from '../../lib/appwrite'
+import { appwriteTeams } from '../lib/appwrite'
 
 export type ClanPreferences = Record<string, any>
 
