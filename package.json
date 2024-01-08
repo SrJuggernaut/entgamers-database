@@ -1,9 +1,12 @@
 {
   "name": "entgamers-database",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "dist/index.js",
   "exports": {
-    "./*": "./dist/"
+    "./*": "./dist/*",
+    "./frontend/*": "./dist/frontend/*",
+    "./backend/*": "./dist/backend/*",
+    "./lib/*": "./dist/lib/*"
   },
   "type": "module",
   "files": [
@@ -18,7 +21,7 @@
     "postinstall": "tsc && prisma generate"
   },
   "devDependencies": {
-    "@types/node": "^20.10.6",
+    "@types/node": "^20.10.7",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "bun-types": "latest",
     "eslint": "^8.0.1",
@@ -26,7 +29,7 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
     "eslint-plugin-promise": "^6.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.3.3"
   },
   "dependencies": {
     "@prisma/client": "^5.7.1",
