@@ -1,14 +1,11 @@
 {
   "name": "entgamers-database",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "dist/index.js",
   "exports": {
-    "./*": "./dist/*",
-    "./frontend/*": "./dist/frontend/*",
-    "./backend/*": "./dist/backend/*",
-    "./lib/*": "./dist/lib/*"
+    ".": "./dist/index.js",
+    "./*": "./dist/*.js"
   },
-  "type": "module",
   "files": [
     "dist",
     "prisma"
