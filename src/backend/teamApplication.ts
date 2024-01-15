@@ -1,6 +1,8 @@
 import { type Prisma, type TeamApplication } from '@prisma/client'
 import PrismaClient from '../lib/prismaClient'
 
+export type { TeamApplication } from '@prisma/client'
+
 export interface TeamApplicationList {
   teamApplications: TeamApplication[]
   total: number
