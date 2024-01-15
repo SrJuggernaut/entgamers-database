@@ -1,7 +1,7 @@
-import { PrismaClient, type $Enums, type Prisma } from '@prisma/client'
+import { Prisma, PrismaClient, type $Enums } from '@prisma/client'
 
 const prismaClient = new PrismaClient()
 
-export type { $Enums, Prisma }
+export { $Enums, Prisma }
 
 export default prismaClient
