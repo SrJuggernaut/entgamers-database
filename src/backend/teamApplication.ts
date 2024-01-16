@@ -10,7 +10,7 @@ export interface TeamApplicationList {
 
 export const getTeamApplications = async (findManyArgs?: Prisma.TeamApplicationFindManyArgs): Promise<TeamApplicationList> => {
   const teamApplications = await PrismaClient.teamApplication.findMany(findManyArgs)
-  const total = await PrismaClient.teamApplication.count()
+  const total = await PrismaClient.teamApplication.count({ where: findManyArgs?.where })
   return { teamApplications, total }
 }
 
