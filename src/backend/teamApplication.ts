@@ -14,11 +14,8 @@ export const getTeamApplications = async (findManyArgs?: Prisma.TeamApplicationF
   return { teamApplications, total }
 }
 
-export const getTeamApplication = async (findUniqueArgs: Prisma.TeamApplicationFindUniqueArgs): Promise<TeamApplication> => {
+export const getTeamApplication = async (findUniqueArgs: Prisma.TeamApplicationFindUniqueArgs): Promise<TeamApplication | null> => {
   const teamApplication = await PrismaClient.teamApplication.findUnique(findUniqueArgs)
-  if (teamApplication === null) {
-    throw new Error('TeamApplication not found')
-  }
   return teamApplication
 }
 
