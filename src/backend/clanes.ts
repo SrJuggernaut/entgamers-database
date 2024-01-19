@@ -1,7 +1,10 @@
 import { ID, type Models } from 'node-appwrite'
 import { appwriteNodeTeams } from '../lib/appriteNode'
 
-export type ClanPreferences = Record<string, any>
+export interface ClanPreferences {
+  picture?: string
+  description?: string
+}
 
 export const getClanes = async (): Promise<Models.TeamList<ClanPreferences>> => {
   const clanes = await appwriteNodeTeams.list()

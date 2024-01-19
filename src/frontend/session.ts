@@ -1,7 +1,16 @@
 import { ID, type Models } from 'appwrite'
 import { appwriteAccount } from '../lib/appwrite'
 
-export type AccountPreferences = Record<string, any>
+export interface SocialLink {
+  label: string
+  url: string
+}
+
+export interface AccountPreferences {
+  profilePicture?: string
+  bio?: string
+  socialLinks?: SocialLink[]
+}
 
 export const login = async (email: string, password: string): Promise<Models.Session> => {
   const response = await appwriteAccount.createEmailSession(email, password)
@@ -37,8 +46,8 @@ export const getPreferences = async (): Promise<AccountPreferences> => {
   return preferences
 }
 
-export const updatePreferences = async (preferences: AccountPreferences): Promise<AccountPreferences> => {
-  const updatedPreferences = await appwriteAccount.updatePrefs(preferences)
+export const updatePreferences = async (preferences: AccountPreferences): Promise<Models.User<AccountPreferences>> => {
+  const updatedPreferences = await appwriteAccount.updatePrefs<AccountPreferences>(preferences)
   return updatedPreferences
 }
 
