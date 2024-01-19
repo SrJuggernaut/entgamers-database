@@ -1,16 +1,8 @@
 import { ID, type Models } from 'appwrite'
 import { appwriteAccount } from '../lib/appwrite'
+import { type UserPreferences } from '../types/user'
 
-export interface SocialLink {
-  label: string
-  url: string
-}
-
-export interface AccountPreferences {
-  profilePicture?: string
-  bio?: string
-  socialLinks?: SocialLink[]
-}
+export type UserWithPreferences = Models.User<UserPreferences>
 
 export const login = async (email: string, password: string): Promise<Models.Session> => {
   const response = await appwriteAccount.createEmailSession(email, password)
@@ -21,33 +13,33 @@ export const logout = async (sessionId: string): Promise<void> => {
   await appwriteAccount.deleteSession(sessionId)
 }
 
-export const register = async (email: string, password: string, name?: string): Promise<Models.User<AccountPreferences>> => {
-  const newAccount = await appwriteAccount.create<AccountPreferences>(ID.unique(), email, password, name)
+export const register = async (email: string, password: string, name?: string): Promise<UserWithPreferences> => {
+  const newAccount = await appwriteAccount.create<UserPreferences>(ID.unique(), email, password, name)
   return newAccount
 }
 
-export const updateEmail = async (email: string, password: string): Promise<Models.User<AccountPreferences>> => {
+export const updateEmail = async (email: string, password: string): Promise<UserWithPreferences> => {
   const updatedAccount = await appwriteAccount.updateEmail(email, password)
   return updatedAccount
 }
 
-export const updateName = async (name: string): Promise<Models.User<AccountPreferences>> => {
+export const updateName = async (name: string): Promise<UserWithPreferences> => {
   const updatedAccount = await appwriteAccount.updateName(name)
   return updatedAccount
 }
 
-export const updatePassword = async (password: string, oldPassword: string): Promise<Models.User<AccountPreferences>> => {
+export const updatePassword = async (password: string, oldPassword: string): Promise<UserWithPreferences> => {
   const updatedAccount = await appwriteAccount.updatePassword(password, oldPassword)
   return updatedAccount
 }
 
-export const getPreferences = async (): Promise<AccountPreferences> => {
+export const getPreferences = async (): Promise<UserPreferences> => {
   const preferences = await appwriteAccount.getPrefs()
   return preferences
 }
 
-export const updatePreferences = async (preferences: AccountPreferences): Promise<Models.User<AccountPreferences>> => {
-  const updatedPreferences = await appwriteAccount.updatePrefs<AccountPreferences>(preferences)
+export const updatePreferences = async (preferences: UserPreferences): Promise<UserWithPreferences> => {
+  const updatedPreferences = await appwriteAccount.updatePrefs<UserPreferences>(preferences)
   return updatedPreferences
 }
 

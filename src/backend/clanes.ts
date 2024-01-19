@@ -1,17 +1,15 @@
 import { ID, type Models } from 'node-appwrite'
+import { type ClanPreferences } from '../frontend/clanes'
 import { appwriteNodeTeams } from '../lib/appriteNode'
 
-export interface ClanPreferences {
-  picture?: string
-  description?: string
-}
+export type ClanWithPreferences = Models.Team<ClanPreferences>
 
 export const getClanes = async (): Promise<Models.TeamList<ClanPreferences>> => {
   const clanes = await appwriteNodeTeams.list()
   return clanes
 }
 
-export const getClan = async (clanId: string): Promise<Models.Team<ClanPreferences>> => {
+export const getClan = async (clanId: string): Promise<ClanWithPreferences> => {
   const clan = await appwriteNodeTeams.get(clanId)
   return clan
 }
@@ -31,7 +29,7 @@ export const getClanPreferences = async (clanId: string): Promise<ClanPreference
   return clanPreferences
 }
 
-export const createClan = async (name: string, roles?: string[]): Promise<Models.Team<ClanPreferences>> => {
+export const createClan = async (name: string, roles?: string[]): Promise<ClanWithPreferences> => {
   const clan = await appwriteNodeTeams.create(ID.unique(), name, roles)
   return clan
 }
@@ -41,7 +39,7 @@ export const inviteClanMember = async (clanId: string, roles: string[], email?: 
   return clanMember
 }
 
-export const updateClanName = async (clanId: string, name: string): Promise<Models.Team<ClanPreferences>> => {
+export const updateClanName = async (clanId: string, name: string): Promise<ClanWithPreferences> => {
   const clan = await appwriteNodeTeams.updateName(clanId, name)
   return clan
 }
