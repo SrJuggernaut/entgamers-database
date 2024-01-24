@@ -15,8 +15,8 @@ export const getFile = async (bucketId: string, fileId: string): Promise<Models.
   return file
 }
 
-export const createFile = async (bucketId: string, file: File, permissions: string[]): Promise<Models.File> => {
-  const fileCreated = await appwriteStorage.createFile(bucketId, ID.unique(), file, permissions)
+export const createFile = async (bucketId: string, file: File, permissions: string[], id?: string): Promise<Models.File> => {
+  const fileCreated = await appwriteStorage.createFile(bucketId, id ?? ID.unique(), file, permissions)
   return fileCreated
 }
 
