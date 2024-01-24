@@ -29,8 +29,8 @@ export const getClanPreferences = async (clanId: string): Promise<ClanPreference
   return clanPreferences
 }
 
-export const createClan = async (name: string, roles?: string[]): Promise<ClanWithPreferences> => {
-  const clan = await appwriteNodeTeams.create(ID.unique(), name, roles)
+export const createClan = async (name: string, id?: string, roles?: string[]): Promise<ClanWithPreferences> => {
+  const clan = await appwriteNodeTeams.create(id ?? ID.unique(), name, roles)
   return clan
 }
 
