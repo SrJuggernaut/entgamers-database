@@ -4,8 +4,9 @@ import { type UserPreferences } from '../types/user'
 
 export { type UserPreferences }
 export type UserWithPreferences = Models.User<UserPreferences>
+export type userSession = Models.Session
 
-export const login = async (email: string, password: string): Promise<Models.Session> => {
+export const login = async (email: string, password: string): Promise<userSession> => {
   const response = await appwriteAccount.createEmailSession(email, password)
   return response
 }
@@ -39,6 +40,11 @@ export const getPreferences = async (): Promise<UserPreferences> => {
   return preferences
 }
 
+export const getCurrentUser = async (): Promise<UserWithPreferences> => {
+  const user = await appwriteAccount.get()
+  return user
+}
+
 export const updatePreferences = async (preferences: UserPreferences): Promise<UserWithPreferences> => {
   const updatedPreferences = await appwriteAccount.updatePrefs<UserPreferences>(preferences)
   return updatedPreferences
@@ -60,7 +66,7 @@ export const updateVerification = async (userId: string, secret: string): Promis
   await appwriteAccount.updateVerification(userId, secret)
 }
 
-export const getSession = async (sessionId: string | 'current'): Promise<Models.Session> => {
+export const getSession = async (sessionId: string | 'current'): Promise<userSession> => {
   const session = await appwriteAccount.getSession(sessionId)
   return session
 }

@@ -4,24 +4,28 @@ import { appwriteNodeStorage } from '../lib/appriteNode'
 export type BucketCompression = 'none' | 'gzip' | 'zstd'
 export type fileGravity = 'center' | 'top-left' | 'top' | 'top-right' | 'left' | 'right' | 'bottom-left' | 'bottom' | 'bottom-right'
 export type fileFormat = 'jpeg' | 'jpg' | 'png' | 'gif' | 'webp'
+export type bucket = Models.Bucket
+export type bucketList = Models.BucketList
+export type storedFile = Models.File
+export type storedFileList = Models.FileList
 
-export const getBuckets = async (): Promise<Models.BucketList> => {
+export const getBuckets = async (): Promise<bucketList> => {
   const buckets = await appwriteNodeStorage.listBuckets()
   return buckets
 }
 
-export const getBucket = async (bucketId: string): Promise<Models.Bucket> => {
+export const getBucket = async (bucketId: string): Promise<bucket> => {
   const bucket = await appwriteNodeStorage.getBucket(bucketId)
   return bucket
 }
 
-export const createBucket = async (name: string, id?: string, permissions?: string[], fileSecurity?: boolean, enabled?: boolean, maximumFileSizeInBytes?: number, allowedFileExtensions?: string[], compression?: BucketCompression, encryption?: boolean, antivirus?: boolean): Promise<Models.Bucket> => {
+export const createBucket = async (name: string, id?: string, permissions?: string[], fileSecurity?: boolean, enabled?: boolean, maximumFileSizeInBytes?: number, allowedFileExtensions?: string[], compression?: BucketCompression, encryption?: boolean, antivirus?: boolean): Promise<bucket> => {
   const bucketId = id ?? ID.unique()
   const bucketCreated = await appwriteNodeStorage.createBucket(bucketId, name, permissions, fileSecurity, enabled, maximumFileSizeInBytes, allowedFileExtensions, compression, encryption, antivirus)
   return bucketCreated
 }
 
-export const updateBucket = async (bucketId: string, name: string, permissions: string[], fileSecurity: boolean, enabled: boolean, maximumFileSizeInBytes: number, allowedFileExtensions: string[], compression: BucketCompression, encryption: boolean, antivirus: boolean): Promise<Models.Bucket> => {
+export const updateBucket = async (bucketId: string, name: string, permissions: string[], fileSecurity: boolean, enabled: boolean, maximumFileSizeInBytes: number, allowedFileExtensions: string[], compression: BucketCompression, encryption: boolean, antivirus: boolean): Promise<bucket> => {
   const bucketUpdated = await appwriteNodeStorage.updateBucket(bucketId, name, permissions, fileSecurity, enabled, maximumFileSizeInBytes, allowedFileExtensions, compression, encryption, antivirus)
   return bucketUpdated
 }
@@ -31,22 +35,22 @@ export const deleteBucket = async (bucketId: string): Promise<string> => {
   return bucketId
 }
 
-export const getFiles = async (bucketId: string): Promise<Models.FileList> => {
+export const getFiles = async (bucketId: string): Promise<storedFileList> => {
   const files = await appwriteNodeStorage.listFiles(bucketId)
   return files
 }
 
-export const getFile = async (bucketId: string, fileId: string): Promise<Models.File> => {
+export const getFile = async (bucketId: string, fileId: string): Promise<storedFile> => {
   const file = await appwriteNodeStorage.getFile(bucketId, fileId)
   return file
 }
 
-export const createFile = async (bucketId: string, binaryFile: string, permissions: string[]): Promise<Models.File> => {
+export const createFile = async (bucketId: string, binaryFile: string, permissions: string[]): Promise<storedFile> => {
   const fileCreated = await appwriteNodeStorage.createFile(bucketId, ID.unique(), binaryFile, permissions)
   return fileCreated
 }
 
-export const updateFile = async (bucketId: string, fileId: string, name: string, permissions: string[]): Promise<Models.File> => {
+export const updateFile = async (bucketId: string, fileId: string, name: string, permissions: string[]): Promise<storedFile> => {
   const fileUpdated = await appwriteNodeStorage.updateFile(bucketId, fileId, name, permissions)
   return fileUpdated
 }
