@@ -2,6 +2,7 @@ import { ID, type Models } from 'appwrite'
 import { appwriteAccount } from '../lib/appwrite'
 import { type UserPreferences } from '../types/user'
 
+export { type UserPreferences }
 export type UserWithPreferences = Models.User<UserPreferences>
 
 export const login = async (email: string, password: string): Promise<Models.Session> => {

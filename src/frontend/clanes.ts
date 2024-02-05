@@ -1,7 +1,9 @@
 import { type Models } from 'appwrite'
 import { appwriteTeams } from '../lib/appwrite'
+import { type ClanPreferences } from '../types/clanes'
 
-export type ClanPreferences = Record<string, any>
+export { type ClanPreferences }
+export type ClanWithPreferences = Models.Team<ClanPreferences>
 
 export const getClanes = async (): Promise<Models.TeamList<ClanPreferences>> => {
   const clanes = await appwriteTeams.list()

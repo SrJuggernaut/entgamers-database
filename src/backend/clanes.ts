@@ -2,6 +2,7 @@ import { ID, type Models } from 'node-appwrite'
 import { type ClanPreferences } from '../frontend/clanes'
 import { appwriteNodeTeams } from '../lib/appriteNode'
 
+export { type ClanPreferences }
 export type ClanWithPreferences = Models.Team<ClanPreferences>
 
 export const getClanes = async (): Promise<Models.TeamList<ClanPreferences>> => {

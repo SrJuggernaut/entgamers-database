@@ -2,6 +2,8 @@ import { type Models } from 'node-appwrite'
 import { appwriteNodeUsers } from '../lib/appriteNode'
 import { type UserPreferences } from '../types/user'
 
+export { type UserPreferences }
+export type UserWithPreferences = Models.User<UserPreferences>
 export type UserWithPreferencesList = Models.UserList<UserPreferences>
 
 export const getAllUsers = async (): Promise<UserWithPreferencesList> => {
