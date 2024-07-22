@@ -1,8 +1,6 @@
 import { Permission, Role } from 'node-appwrite'
-import { ADMIN_CLAN_ID, MODERATOR_CLAN_ID } from '../clanes/administrative'
 import { createBucket, getBucket } from '../storage'
-
-export const PROFILE_PICTURE_BUCKET_ID = 'profile-pictures'
+import { ADMIN_CLAN_ID, MODERATOR_CLAN_ID, PROFILE_PICTURE_BUCKET_ID } from '../../lib/env'
 
 export const ensureProfilePicturesBucket = (() => {
   let bucketExists = false

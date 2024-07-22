@@ -1,5 +1,5 @@
 import { Account, Client, Storage, Teams } from 'appwrite'
-import { APPWRITE_ENDPOINT, APPWRITE_PROJECT_ID } from './dotenv'
+import { APPWRITE_ENDPOINT, APPWRITE_PROJECT_ID } from './env'
 
 const appwriteClient = new Client()
 

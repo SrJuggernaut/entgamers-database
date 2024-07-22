@@ -1,7 +1,6 @@
 import { Permission, Role, type Models } from 'appwrite'
 import { createFile, deleteFile, getFile, getFileDownload, getFileView, getFiles } from '../storage'
-
-export const PROFILE_PICTURE_BUCKET_ID = 'profile-pictures'
+import { PROFILE_PICTURE_BUCKET_ID } from '../../lib/env'
 
 export const getProfilePictures = async (): Promise<Models.FileList> => {
   const files = await getFiles(PROFILE_PICTURE_BUCKET_ID)
