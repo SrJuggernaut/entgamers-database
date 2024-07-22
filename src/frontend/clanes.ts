@@ -1,19 +1,12 @@
-import { type Models } from 'appwrite'
 import { appwriteTeams } from '../lib/appwrite'
-import { type ClanPreferences } from '../types/clanes'
+import type { Clan, ClanList, ClanMember, ClanMemberList, ClanPreferences } from '../types/clanes'
 
-export { type ClanPreferences }
-export type ClanWithPreferences = Models.Team<ClanPreferences>
-export type ClanList = Models.TeamList<ClanPreferences>
-export type ClanMember = Models.Membership
-export type ClanMemberList = Models.MembershipList
-
-export const getClanes = async (): Promise<Models.TeamList<ClanPreferences>> => {
-  const clanes = await appwriteTeams.list()
+export const getClanes = async (): Promise<ClanList> => {
+  const clanes = await appwriteTeams.list<ClanPreferences>()
   return clanes
 }
 
-export const getClan = async (clanId: string): Promise<ClanWithPreferences> => {
+export const getClan = async (clanId: string): Promise<Clan> => {
   const clan = await appwriteTeams.get(clanId)
   return clan
 }
@@ -33,7 +26,7 @@ export const getClanPreferences = async (clanId: string): Promise<ClanPreference
   return clanPreferences
 }
 
-export const updateClanName = async (clanId: string, name: string): Promise<ClanWithPreferences> => {
+export const updateClanName = async (clanId: string, name: string): Promise<Clan> => {
   const clan = await appwriteTeams.updateName(clanId, name)
   return clan
 }
@@ -47,3 +40,5 @@ export const updateClanPreferences = async (clanId: string, preferences: ClanPre
   const clanPreferences = await appwriteTeams.updatePrefs(clanId, preferences)
   return clanPreferences
 }
+
+export type { Clan, ClanList, ClanMember, ClanMemberList, ClanPreferences }

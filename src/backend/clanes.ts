@@ -1,19 +1,12 @@
-import { ID, type Models } from 'node-appwrite'
-import { type ClanPreferences } from '../frontend/clanes'
-import { appwriteNodeTeams } from '../lib/appriteNode'
+import { Clan, ClanList, ClanMember, ClanMemberList, type ClanPreferences } from '../frontend/clanes'
+import { appwriteNodeTeams, ID } from '../lib/appriteNode'
 
-export { type ClanPreferences }
-export type ClanWithPreferences = Models.Team<ClanPreferences>
-export type ClanList = Models.TeamList<ClanPreferences>
-export type ClanMember = Models.Membership
-export type ClanMemberList = Models.MembershipList
-
-export const getClanes = async (): Promise<Models.TeamList<ClanPreferences>> => {
+export const getClanes = async (): Promise<ClanList> => {
   const clanes = await appwriteNodeTeams.list()
   return clanes
 }
 
-export const getClan = async (clanId: string): Promise<ClanWithPreferences> => {
+export const getClan = async (clanId: string): Promise<Clan> => {
   const clan = await appwriteNodeTeams.get(clanId)
   return clan
 }
@@ -33,7 +26,7 @@ export const getClanPreferences = async (clanId: string): Promise<ClanPreference
   return clanPreferences
 }
 
-export const createClan = async (name: string, id?: string, roles?: string[]): Promise<ClanWithPreferences> => {
+export const createClan = async (name: string, id?: string, roles?: string[]): Promise<Clan> => {
   const clan = await appwriteNodeTeams.create(id ?? ID.unique(), name, roles)
   return clan
 }
@@ -43,7 +36,7 @@ export const inviteClanMember = async (clanId: string, roles: string[], email?: 
   return clanMember
 }
 
-export const updateClanName = async (clanId: string, name: string): Promise<ClanWithPreferences> => {
+export const updateClanName = async (clanId: string, name: string): Promise<Clan> => {
   const clan = await appwriteNodeTeams.updateName(clanId, name)
   return clan
 }
@@ -62,7 +55,8 @@ export const deleteClan = async (clanId: string): Promise<void> => {
   await appwriteNodeTeams.delete(clanId)
 }
 
-export const deleteClanMember = async (clanId: string, memberId: string): Promise<string> => {
-  const clanMember = await appwriteNodeTeams.deleteMembership(clanId, memberId)
-  return clanMember
+export const deleteClanMember = async (clanId: string, memberId: string): Promise<void> => {
+  await appwriteNodeTeams.deleteMembership(clanId, memberId)
 }
+
+export { type ClanPreferences }
