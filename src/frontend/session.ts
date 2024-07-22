@@ -7,7 +7,7 @@ export type UserWithPreferences = Models.User<UserPreferences>
 export type userSession = Models.Session
 
 export const login = async (email: string, password: string): Promise<userSession> => {
-  const response = await appwriteAccount.createEmailSession(email, password)
+  const response = await appwriteAccount.createEmailPasswordSession(email, password)
   return response
 }
 
@@ -54,8 +54,8 @@ export const createPasswordRecovery = async (email: string, url: string): Promis
   await appwriteAccount.createRecovery(email, url)
 }
 
-export const updatePasswordRecovery = async (userId: string, secret: string, password: string, passwordAgain: string): Promise<void> => {
-  await appwriteAccount.updateRecovery(userId, secret, password, passwordAgain)
+export const updatePasswordRecovery = async (userId: string, secret: string, password: string): Promise<void> => {
+  await appwriteAccount.updateRecovery(userId, secret, password)
 }
 
 export const createVerification = async (url: string): Promise<void> => {
