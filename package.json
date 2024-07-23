@@ -31,9 +31,7 @@
     "typescript-eslint": "^7.17.0"
   },
   "dependencies": {
-    "@prisma/client": "^5.17.0",
     "appwrite": "^15.0.0",
-    "node-appwrite": "^13.0.0",
-    "prisma": "^5.17.0"
+    "node-appwrite": "^13.0.0"
   }
 }
