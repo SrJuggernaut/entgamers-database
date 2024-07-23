@@ -41,4 +41,4 @@ export const getFileView = (bucketId: string, fileId: string): URL => {
   return fileView
 }
 
-export type { StorageFileList, StorageFile, ImageFormat, ImageGravity }
+export type { ImageFormat, ImageGravity, StorageFile, StorageFileList }

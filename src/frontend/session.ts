@@ -1,5 +1,5 @@
 import { appwriteAccount, ID } from '../lib/appwrite'
-import type { userSession, User, UserPreferences } from '../types/user'
+import type { User, UserPreferences, userSession } from '../types/user'
 
 export const login = async (email: string, password: string): Promise<userSession> => {
   const response = await appwriteAccount.createEmailPasswordSession(email, password)
@@ -66,4 +66,4 @@ export const getSession = async (sessionId: string | 'current'): Promise<userSes
   return session
 }
 
-export type { UserPreferences, User, userSession }
+export type { User, UserPreferences, userSession }

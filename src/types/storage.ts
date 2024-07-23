@@ -7,5 +7,5 @@ export type BucketList = BackendModels.BucketList
 export type StorageFileList = Models.FileList
 export type StorageFile = Models.File
 
-export { ImageGravity, ImageFormat } from 'appwrite'
+export { ImageFormat, ImageGravity } from 'appwrite'
 export { Compression } from 'node-appwrite'

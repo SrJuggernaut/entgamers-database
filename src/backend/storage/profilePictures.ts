@@ -1,6 +1,6 @@
 import { Permission, Role } from '../../lib/appriteNode'
-import { createBucket, getBucket } from '../storage'
 import { ADMIN_CLAN_ID, MODERATOR_CLAN_ID, PROFILE_PICTURE_BUCKET_ID } from '../../lib/env'
+import { createBucket, getBucket } from '../storage'
 
 export const ensureProfilePicturesBucket = (() => {
   let bucketExists = false
