@@ -32,3 +32,7 @@ export const COLLABORATOR_CLAN_ID = 'Collaborator'
 
 // Bucket IDs
 export const PROFILE_PICTURE_BUCKET_ID = 'profile-pictures'
+
+// Database IDs
+export const ADMINISTRATIVE_DATABASE_ID = 'administrative'
+export const TEAM_APPLICATIONS_COLLECTION_ID = 'team-applications'

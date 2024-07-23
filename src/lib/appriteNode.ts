@@ -1,4 +1,4 @@
-import { Client, Storage, Teams, Users } from 'node-appwrite'
+import { Client, Databases, Storage, Teams, Users } from 'node-appwrite'
 import { APPWRITE_API_KEY, APPWRITE_ENDPOINT, APPWRITE_PROJECT_ID } from './env'
 
 const appwriteNodeClient = new Client()
@@ -10,12 +10,14 @@ appwriteNodeClient
 
 const appwriteNodeUsers = new Users(appwriteNodeClient)
 
+const appwriteNodeDatabases = new Databases(appwriteNodeClient)
+
 const appwriteNodeTeams = new Teams(appwriteNodeClient)
 
 const appwriteNodeStorage = new Storage(appwriteNodeClient)
 
 export default appwriteNodeClient
 
-export { appwriteNodeStorage, appwriteNodeTeams, appwriteNodeUsers }
+export { appwriteNodeDatabases, appwriteNodeStorage, appwriteNodeTeams, appwriteNodeUsers }
 
-export { ID, Role, Permission } from 'node-appwrite'
+export { ID, Permission, Role } from 'node-appwrite'
