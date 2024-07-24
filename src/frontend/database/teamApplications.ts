@@ -25,3 +25,6 @@ export const updateTeamApplication = async (teamApplicationId: string, data: Par
 export const deleteTeamApplication = async (teamApplicationId: string): Promise<void> => {
   await appwriteDatabases.deleteDocument(ADMINISTRATIVE_DATABASE_ID, TEAM_APPLICATIONS_COLLECTION_ID, teamApplicationId)
 }
+
+export type { TeamApplicationRole, TeamApplicationStatus } from '../../types/teamApplications'
+export type { TeamApplication, TeamApplicationData, TeamApplicationList }

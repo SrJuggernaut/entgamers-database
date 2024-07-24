@@ -1,12 +1,12 @@
 import { Models } from 'appwrite'
 
-enum TeamApplicationStatus {
+export enum TeamApplicationStatus {
   Pending = 'Pending',
   Accepted = 'Accepted',
   Rejected = 'Rejected'
 }
 
-enum TeamApplicationRole {
+export enum TeamApplicationRole {
   Admin = 'Admin',
   Moderator = 'Moderator',
   Collaborator = 'Collaborator',
