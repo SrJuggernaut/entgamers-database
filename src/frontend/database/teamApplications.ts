@@ -2,7 +2,7 @@ import { appwriteDatabases, ID } from '../../lib/appwrite'
 import { ADMINISTRATIVE_DATABASE_ID, TEAM_APPLICATIONS_COLLECTION_ID } from '../../lib/env'
 import { TeamApplication, TeamApplicationData, TeamApplicationList } from '../../types/teamApplications'
 
-export const createTeamApplication = async (data: TeamApplicationData): Promise<Omit<TeamApplicationData, 'status'>> => {
+export const createTeamApplication = async (data: Omit<TeamApplicationData, 'status'>): Promise<TeamApplication> => {
   const teamApplication = await appwriteDatabases.createDocument<TeamApplication>(ADMINISTRATIVE_DATABASE_ID, TEAM_APPLICATIONS_COLLECTION_ID, ID.unique(), data)
   return teamApplication
 }
