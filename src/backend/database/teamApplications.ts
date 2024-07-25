@@ -11,7 +11,7 @@ export const ensureTeamApplicationsCollection = (() => {
     try {
       await ensureAdministrativeClans()
       await ensureDatabase(ADMINISTRATIVE_DATABASE_ID)
-      await appwriteNodeDatabases.listCollections(ADMINISTRATIVE_DATABASE_ID)
+      await appwriteNodeDatabases.getCollection(ADMINISTRATIVE_DATABASE_ID, TEAM_APPLICATIONS_COLLECTION_ID)
     } catch (error) {
       const permissions = [
         Permission.create(Role.any()),
