@@ -1,12 +1,16 @@
 import { appwriteNodeDatabases, ID, Permission, Role } from '../../lib/appriteNode'
 import { ADMIN_CLAN_ID, ADMINISTRATIVE_DATABASE_ID, TEAM_APPLICATIONS_COLLECTION_ID } from '../../lib/env'
 import { TeamApplication, TeamApplicationData, TeamApplicationList } from '../../types/teamApplications'
+import { ensureAdministrativeClans } from '../clanes/administrative'
+import { ensureDatabase } from '../database'
 
 export const ensureTeamApplicationsCollection = (() => {
   let teamApplicationsCollectionExists = false
   return async () => {
     if (teamApplicationsCollectionExists) return
     try {
+      await ensureAdministrativeClans()
+      await ensureDatabase(ADMINISTRATIVE_DATABASE_ID)
       await appwriteNodeDatabases.listCollections(ADMINISTRATIVE_DATABASE_ID)
     } catch (error) {
       const permissions = [
