@@ -27,7 +27,7 @@ export const ensureTeamApplicationsCollection = (() => {
       await appwriteNodeDatabases.createEmailAttribute(ADMINISTRATIVE_DATABASE_ID, TEAM_APPLICATIONS_COLLECTION_ID, 'email', true, undefined, false)
       await appwriteNodeDatabases.createStringAttribute(ADMINISTRATIVE_DATABASE_ID, TEAM_APPLICATIONS_COLLECTION_ID, 'discord', 56, true, undefined, false, false)
       await appwriteNodeDatabases.createStringAttribute(ADMINISTRATIVE_DATABASE_ID, TEAM_APPLICATIONS_COLLECTION_ID, 'message', 4096, true, undefined, false, false)
-      await appwriteNodeDatabases.createEnumAttribute(ADMINISTRATIVE_DATABASE_ID, TEAM_APPLICATIONS_COLLECTION_ID, 'status', ['Pending', 'Accepted', 'Rejected'], true, 'Pending', false)
+      await appwriteNodeDatabases.createEnumAttribute(ADMINISTRATIVE_DATABASE_ID, TEAM_APPLICATIONS_COLLECTION_ID, 'status', ['Pending', 'Accepted', 'Rejected'], false, 'Pending', false)
       await appwriteNodeDatabases.createEnumAttribute(ADMINISTRATIVE_DATABASE_ID, TEAM_APPLICATIONS_COLLECTION_ID, 'role', ['Admin', 'Moderator', 'Collaborator', 'User'], true, undefined, false)
     } finally {
       teamApplicationsCollectionExists = true
