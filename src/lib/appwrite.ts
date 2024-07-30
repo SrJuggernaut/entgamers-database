@@ -17,5 +17,5 @@ const appwriteStorage = new Storage(appwriteClient)
 
 export default appwriteClient
 
-export { ID, Permission, Role } from 'appwrite'
+export { ID, Permission, Query, Role, type QueryTypes } from 'appwrite'
 export { appwriteAccount, appwriteDatabases, appwriteStorage, appwriteTeams }
