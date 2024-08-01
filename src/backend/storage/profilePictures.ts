@@ -1,5 +1,6 @@
 import { Permission, Role } from '../../lib/appriteNode'
 import { ADMIN_CLAN_ID, MODERATOR_CLAN_ID, PROFILE_PICTURE_BUCKET_ID } from '../../lib/env'
+import { ensureAdminClan, ensureModeratorClan } from '../clanes/administrative'
 import { createBucket, getBucket } from '../storage'
 
 export const ensureProfilePicturesBucket = (() => {
@@ -7,6 +8,8 @@ export const ensureProfilePicturesBucket = (() => {
   return async () => {
     if (bucketExists) return
     try {
+      await ensureAdminClan()
+      await ensureModeratorClan()
       await getBucket('profile-picture')
     } catch (error) {
       const permissions = [

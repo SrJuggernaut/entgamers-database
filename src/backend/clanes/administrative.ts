@@ -1,7 +1,7 @@
 import { ADMIN_CLAN_ID, COLLABORATOR_CLAN_ID, MODERATOR_CLAN_ID } from '../../lib/env'
 import { createClan, getClan } from '../clanes'
 
-const ensureAdminClan = (() => {
+export const ensureAdminClan = (() => {
   let adminClanExists = false
   return async () => {
     if (adminClanExists) return
@@ -15,7 +15,7 @@ const ensureAdminClan = (() => {
   }
 })()
 
-const ensureModeratorClan = (() => {
+export const ensureModeratorClan = (() => {
   let moderatorClanExists = false
   return async () => {
     if (moderatorClanExists) return
@@ -29,7 +29,7 @@ const ensureModeratorClan = (() => {
   }
 })()
 
-const ensureCollaboratorClan = (() => {
+export const ensureCollaboratorClan = (() => {
   let collaboratorClanExists = false
   return async () => {
     if (collaboratorClanExists) return
@@ -42,9 +42,3 @@ const ensureCollaboratorClan = (() => {
     }
   }
 })()
-
-export const ensureAdministrativeClans = async (): Promise<void> => {
-  await ensureAdminClan()
-  await ensureModeratorClan()
-  await ensureCollaboratorClan()
-}
